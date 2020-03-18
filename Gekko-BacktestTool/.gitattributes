@@ -1,0 +1,3 @@
+database.csv linguist-vendored
+README.MD linguist-vendored
+*.pl linguist-language=Perl
