@@ -39,7 +39,7 @@ const config = {
   mutateElements: 7,
 
   // How many parallel queries to run at once
-  parallelqueries: 5,
+  parallelqueries: 2,
 
   // Min sharpe to consider in the profitForMinSharpe main objective
   minSharpe: 0.5,
@@ -61,19 +61,19 @@ const config = {
     },
   },
 
-  candleValues: [5,10,15,30,60,120,240],
+  candleValues: [5,10,15],
   getProperties: () => ({
 
-    historySize: randomExt.integer(100, 70),
-  threshold_buy: randomExt.float(0,0.5).toFixed(2),
-  threshold_sell: randomExt.float(0,-0.5).toFixed(2),
+    historySize: 1100,
+  threshold_buy: randomExt.float(0.5,1).toFixed(2),
+  threshold_sell: randomExt.float(-0.5,1).toFixed(2),
   method: 'adadelta',
-  learning_rate: randomExt.integer(3,0),
+  learning_rate: randomExt.float(1,0).toFixed(1),
   momentum: 1.89,
   decay: 0.13,                                                                            
   stoploss_enabled: false,                                                                
   stoploss_threshold: 0.85,                                                               
-  hodl_threshold: randomExt.integer(10,6),
+  hodl_threshold: randomExt.float(1,0.5).toFixed(1),
   price_buffer_len: 100,                                                                  
   min_predictions: 1100,
 
