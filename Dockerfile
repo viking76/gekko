@@ -23,14 +23,16 @@ RUN npm install -g --production node-gyp && \
 
 # Install Gekko dependencies
 COPY package.json .
-RUN npm install --production && \
+RUN npm update -g && \
+    npm install --production && \
     npm install --production redis talib tulind pg convnetjs mathjs && \
     npm cache clean --force
 
 # Install Gekko Broker dependencies
 WORKDIR exchange
 COPY exchange/package.json .
-RUN npm install --production && \
+RUN npm update -g && \
+    npm install --production && \
     npm cache clean --force
 WORKDIR ../
 
