@@ -48,7 +48,7 @@ const config = {
   // score = ideas? feedback?
   // profit = recommended!
   // profitForMinSharpe = same as profit but sharpe will never be lower than minSharpe
-  mainObjective: 'profitForMinSharpe',
+  mainObjective: 'profit',
 
   // optionally recieve and archive new all time high every new all time high
   notifications: {
