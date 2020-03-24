@@ -36,7 +36,7 @@ const config = {
   variation: 0.5,
 
   // How many components maximum to mutate at once
-  mutateElements: 7,
+  mutateElements: 5,
 
   // How many parallel queries to run at once
   parallelqueries: 2,
@@ -61,19 +61,19 @@ const config = {
     },
   },
 
-  candleValues: [5,10,15],
+  candleValues: [7,10,15],
   getProperties: () => ({
 
     historySize: 1100,
-  threshold_buy: randomExt.float(0.5,1).toFixed(2),
-  threshold_sell: randomExt.float(-0.5,1).toFixed(2),
+  threshold_buy: randomExt.float(0.5,1).toFixed(1),
+  threshold_sell: randomExt.float(-0.5,1).toFixed(1),
   method: 'adadelta',
-  learning_rate: randomExt.float(1,0).toFixed(1),
+  learning_rate: randomExt.float(1.2,0).toFixed(2),
   momentum: 1.89,
   decay: 0.13,                                                                            
   stoploss_enabled: false,                                                                
   stoploss_threshold: 0.85,                                                               
-  hodl_threshold: randomExt.float(1,0.5).toFixed(1),
+  hodl_threshold: randomExt.float(1,0.5).toFixed(2),
   price_buffer_len: 100,                                                                  
   min_predictions: 1100,
 
