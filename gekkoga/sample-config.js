@@ -9,12 +9,12 @@ const config = {
       asset: 'BTC'
     },
 
-//    daterange: 'scan',
+   daterange: 'scan',
 
-    daterange: {
-      from: '2019-01-01 00:00',
-      to: '2020-02-01 00:00'
-    },
+//    daterange: {
+//      from: '2019-01-01 00:00',
+//      to: '2020-02-01 00:00'
+//    },
 
     simulationBalance: {
       'asset': 1,
