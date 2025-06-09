@@ -18,7 +18,7 @@ const wss = new WebSocketServer({ server: server });
 
 const cache = require('./state/cache');
 
-const nodeCommand = _.last(process.argv[1].split('/'));
+const nodeCommand = _.last((process.argv[1] || '').split('/'));
 const isDevServer = nodeCommand === 'server' || nodeCommand === 'server.js';
 
 wss.on('connection', ws => {
