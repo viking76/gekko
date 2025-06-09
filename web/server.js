@@ -5,6 +5,7 @@ const serve = require('koa-static');
 const cors = require('koa-cors');
 const _ = require('lodash');
 const bodyParser = require('koa-bodyparser');
+const convert = require('koa-convert');
 
 const open = require('open');
 const server = require('http').createServer();
@@ -80,32 +81,33 @@ const ROUTE = n => WEBROOT + 'routes/' + n;
 
 // attach routes
 const apiKeys = require(ROUTE('apiKeys'));
-router.get('/api/info', require(ROUTE('info')));
-router.get('/api/strategies', require(ROUTE('strategies')));
-router.get('/api/configPart/:part', require(ROUTE('configPart')));
-router.get('/api/apiKeys', apiKeys.get);
+router.get('/api/info', convert(require(ROUTE('info'))));
+router.get('/api/strategies', convert(require(ROUTE('strategies'))));
+router.get('/api/configPart/:part', convert(require(ROUTE('configPart'))));
+router.get('/api/apiKeys', convert(apiKeys.get));
 
 const listWraper = require(ROUTE('list'));
-router.get('/api/imports', listWraper('imports'));
-router.get('/api/gekkos', listWraper('gekkos'));
-router.get('/api/exchanges', require(ROUTE('exchanges')));
+router.get('/api/imports', convert(listWraper('imports')));
+router.get('/api/gekkos', convert(listWraper('gekkos')));
+router.get('/api/exchanges', convert(require(ROUTE('exchanges'))));
 
-router.post('/api/addApiKey', apiKeys.add);
-router.post('/api/removeApiKey', apiKeys.remove);
-router.post('/api/scan', require(ROUTE('scanDateRange')));
-router.post('/api/scansets', require(ROUTE('scanDatasets')));
-router.post('/api/backtest', require(ROUTE('backtest')));
-router.post('/api/import', require(ROUTE('import')));
-router.post('/api/startGekko', require(ROUTE('startGekko')));
-router.post('/api/stopGekko', require(ROUTE('stopGekko')));
-router.post('/api/deleteGekko', require(ROUTE('deleteGekko')));
-router.post('/api/getCandles', require(ROUTE('getCandles')));
+router.post('/api/addApiKey', convert(apiKeys.add));
+router.post('/api/removeApiKey', convert(apiKeys.remove));
+router.post('/api/scan', convert(require(ROUTE('scanDateRange'))));
+router.post('/api/scansets', convert(require(ROUTE('scanDatasets'))));
+router.post('/api/backtest', convert(require(ROUTE('backtest'))));
+router.post('/api/import', convert(require(ROUTE('import'))));
+router.post('/api/startGekko', convert(require(ROUTE('startGekko'))));
+router.post('/api/stopGekko', convert(require(ROUTE('stopGekko'))));
+router.post('/api/deleteGekko', convert(require(ROUTE('deleteGekko'))));
+router.post('/api/getCandles', convert(require(ROUTE('getCandles'))));
 
 
 // incoming WS:
-// wss.on('connection', ws => {
-//   ws.on('message', _.noop);
-// });
+wss.on('connection', ws => {
+  console.log('[WS] New websocket connection');
+  ws.on('message', _.noop);
+});
 
 app
   .use(cors())
