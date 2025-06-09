@@ -16,9 +16,11 @@ The server exposes two different APIs: A websocket API to push gekko updates and
 When you run `node gekko --ui` it will automatically start a server. You can also do this manually by running:
 
     cd gekko/web
-    node server
+    node server.js
 
-The server will now run on the host/port configured in `gekko/web/vue/public/UIConfig.js` (under api.host).
+**Note for Node.js v22+ users:** The server startup command has been updated to use `server.js` instead of `server` for better compatibility with modern Node.js versions.
+
+The server will now run on the host/port configured in `gekko/web/vue/dist/UIconfig.js` (under api.host).
 
 ## REST API
 
