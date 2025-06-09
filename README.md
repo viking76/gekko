@@ -5,6 +5,23 @@ Gekko is a Bitcoin technical analysis trading and backtesting platform that conn
 
 This Docker container includes additional Gekko strategies from xFFFFF and a Backtest Tool with autobuild functionality.
 
+## 📚 New to Gekko? Start Here!
+
+**Complete Beginner?** We've got you covered with two easy options:
+
+### 🚀 Quick Installation (Ubuntu)
+```bash
+# Clone the repository
+git clone https://github.com/viking76/gekko.git
+cd gekko
+
+# Run the automated installation script
+./quick-start.sh
+```
+
+### 📖 Detailed Guide
+Check out our comprehensive [Installation Guide for Ubuntu](INSTALLATION_GUIDE.md) - a step-by-step tutorial that covers everything from installing Node.js to running your first backtest!
+
 ## Built On
 
 - **LTS Node.js 10** - JavaScript runtime environment
