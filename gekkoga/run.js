@@ -1,7 +1,8 @@
 const Ga = require('./');
 const fs = require('fs');
 
-var runGA = require('commander');
+const { Command } = require('commander');
+var runGA = new Command();
 
 runGA
   .version('0.0.3?')

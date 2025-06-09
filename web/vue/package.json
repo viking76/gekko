@@ -7,21 +7,20 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "marked": "^0.4.0",
-    "superagent": "^3.8.3",
+    "marked": "^14.1.2",
+    "superagent": "^10.1.1",
     "superagent-no-cache": "github:uditalias/superagent-no-cache",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vue": "^2.7.16",
+    "vue-router": "^3.6.5",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
-    "@vue/cli-service": "^3.0.0-beta.15",
-    "babel-plugin-transform-commonjs-es2015-modules": "^4.0.1",
-    "copy-webpack-plugin": "^4.5.2",
-    "pug": "^2.0.3",
-    "pug-plain-loader": "^1.0.0",
-    "vue-template-compiler": "^2.5.16"
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "copy-webpack-plugin": "^12.0.2",
+    "pug": "^3.0.3",
+    "pug-plain-loader": "^1.1.0",
+    "vue-template-compiler": "^2.7.16"
   },
   "postcss": {
     "plugins": {

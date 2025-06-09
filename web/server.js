@@ -6,11 +6,12 @@ const cors = require('koa-cors');
 const _ = require('lodash');
 const bodyParser = require('koa-bodyparser');
 
-const opn = require('opn');
+const open = require('open');
 const server = require('http').createServer();
-const router = require('koa-router')();
+const Router = require('koa-router');
+const router = new Router();
 const ws = require('ws');
-const app = koa();
+const app = new koa();
 
 const WebSocketServer = require('ws').Server;
 const wss = new WebSocketServer({ server: server });
@@ -131,7 +132,7 @@ server.listen(config.api.port, config.api.host, '::', () => {
   // only open a browser when running `node gekko`
   // this prevents opening the browser during development
   if(!isDevServer && !config.headless) {
-    opn(location)
+    open(location)
       .catch(err => {
         console.log('Something went wrong when trying to open your web browser. UI is running on ' + location + '.');
     });
