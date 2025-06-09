@@ -22,6 +22,9 @@ cd gekko
 ### 📖 Detailed Guide
 Check out our comprehensive [Installation Guide for Ubuntu](INSTALLATION_GUIDE.md) - a step-by-step tutorial that covers everything from installing Node.js to running your first backtest!
 
+### 🔧 Node.js v22 Compatibility
+Using Node.js v22+? See our [Node.js v22 Compatibility Guide](docs/installation/nodejs-v22-compatibility.md) for updated installation instructions and troubleshooting tips.
+
 ## Built On
 
 - **Node.js 22+** - JavaScript runtime environment (LTS and Current versions supported)
