@@ -1,13 +1,13 @@
 
 # Gekko All-in-One Docker
 
-Gekko is a Bitcoin technical analysis trading and backtesting platform that connects to popular Bitcoin exchanges. It is written in JavaScript and runs on [Node.js 10](http://nodejs.org).
+Gekko is a Bitcoin technical analysis trading and backtesting platform that connects to popular Bitcoin exchanges. It is written in JavaScript and runs on [Node.js 22 LTS](http://nodejs.org).
 
 This Docker container includes additional Gekko strategies from xFFFFF and a Backtest Tool with autobuild functionality.
 
 ## Built On
 
-- **LTS Node.js 10** - JavaScript runtime environment
+- **LTS Node.js 22** - JavaScript runtime environment
 - **Redis 2.8.0** - In-memory data structure store
 - **mathjs** - Math library for JavaScript
 - **convnet** - Neural network library

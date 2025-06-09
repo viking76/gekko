@@ -2,7 +2,7 @@ init:
   - git config --global core.autocrlf input
 
 environment:
-  nodejs_version: "9"
+  nodejs_version: "22"
 
 install:
   - ps: Install-Product node $env:nodejs_version
