@@ -1,17 +1,18 @@
-# Node.js v22 LTS Upgrade
+# Node.js v22+ Upgrade (LTS and Current Support)
 
 ## Overview
 
-This update upgrades Gekko to use Node.js v22 LTS (Long Term Support), bringing improved performance, security, and modern JavaScript features.
+This update upgrades Gekko to use Node.js v22+ (including both LTS and Current versions), bringing improved performance, security, and modern JavaScript features. Supports Node.js v22 LTS through the latest v24 Current releases.
 
 ## Changes Made
 
 ### 1. Package Configuration
 - **package.json**: Updated Node.js engine requirement from `>=18.0.0` to `>=22.0.0`
+- Supports Node.js v22 LTS (until April 2027) and v24 Current (latest features)
 
 ### 2. Documentation Updates
-- **README.md**: Updated references from Node.js 10 to Node.js 22 LTS
-- Updated "Built On" section to reflect Node.js 22
+- **README.md**: Updated references from Node.js 10 to Node.js 22+ (LTS and Current)
+- Updated "Built On" section to reflect Node.js 22+ support
 
 ### 3. Docker Configuration
 - **Dockerfile**: Updated base image from `node:10` to `node:22`
@@ -19,26 +20,30 @@ This update upgrades Gekko to use Node.js v22 LTS (Long Term Support), bringing 
 ### 4. CI/CD Configuration
 - **appveyor.yml**: Updated Node.js version from "9" to "22"
 
-## Benefits of Node.js v22 LTS
+## Benefits of Node.js v22+ Support
 
 ### Performance Improvements
 - **V8 Engine**: Latest V8 JavaScript engine with improved performance
 - **Memory Management**: Better garbage collection and memory efficiency
 - **Startup Time**: Faster application startup times
+- **Current Versions**: Access to bleeding-edge performance optimizations in v24+
 
 ### Security Enhancements
 - **Latest Security Patches**: All recent security vulnerabilities addressed
 - **Improved TLS**: Enhanced TLS/SSL support
 - **Better Crypto**: Updated cryptographic libraries
+- **Continuous Updates**: Regular security updates in both LTS and Current releases
 
 ### Modern JavaScript Features
-- **ES2024 Support**: Latest ECMAScript features
+- **ES2024+ Support**: Latest ECMAScript features including v24 enhancements
 - **Import/Export**: Better ES module support
 - **Async/Await**: Enhanced async programming capabilities
+- **Future-Ready**: Support for upcoming JavaScript features
 
-### Long-term Support
-- **LTS Until 2027**: Guaranteed support and security updates until April 2027
-- **Stability**: Production-ready with extensive testing
+### Version Flexibility
+- **LTS Support**: Node.js v22 LTS with support until April 2027
+- **Current Support**: Node.js v24+ for latest features and performance
+- **Stability**: Production-ready LTS with optional cutting-edge Current versions
 - **Ecosystem Compatibility**: Better compatibility with modern npm packages
 
 ## Compatibility
@@ -62,18 +67,31 @@ This update upgrades Gekko to use Node.js v22 LTS (Long Term Support), bringing 
 ## Installation Requirements
 
 ### New Minimum Requirements
-- **Node.js**: v22.0.0 or higher
-- **npm**: v10.0.0 or higher (included with Node.js v22)
+- **Node.js**: v22.0.0 or higher (supports both LTS and Current versions)
+- **npm**: v10.0.0 or higher (included with Node.js v22+)
 
 ### Recommended Installation
+
+#### For Production (LTS - Recommended)
 ```bash
-# Ubuntu/Debian
+# Ubuntu/Debian - Node.js 22 LTS
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # Verify installation
-node --version  # Should show v22.x.x
+node --version  # Should show v22.x.x (LTS)
 npm --version   # Should show v10.x.x
+```
+
+#### For Development (Current - Latest Features)
+```bash
+# Ubuntu/Debian - Node.js 24 Current
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Verify installation
+node --version  # Should show v24.x.x (Current)
+npm --version   # Should show v11.x.x
 ```
 
 ## Testing Results
