@@ -41,6 +41,15 @@ Gekko has been updated to fully support Node.js v22.16.0 and later versions. Sev
 
 **Solution**: Updated `web/vue/dist/UIconfig.js` to use dynamic host/port detection.
 
+### 6. UI Mode Command Line Parsing
+
+**Issue**: `node gekko.js --ui` was failing with "Please specify a config file" error due to Commander.js v14 compatibility issues.
+
+**Solution**: 
+- Fixed server.js path reference in gekko.js (added .js extension)
+- Updated command line argument parsing to use `program.opts()` instead of direct property access
+- Enabled argument parsing when gekko.js is the main module
+
 ## Installation Steps
 
 ### Prerequisites
@@ -58,7 +67,10 @@ cd gekko
 # Install dependencies
 npm install
 
-# Start the web server
+# Start the web UI (primary method)
+node gekko.js --ui
+
+# Alternative: Start the web server directly
 cd web
 node server.js
 ```
@@ -93,6 +105,19 @@ The server will start on the configured host/port (default: localhost:3000).
 4. **API endpoint errors**
    - Verify the server is running on the correct port
    - Check that all dependencies are installed with `npm install`
+
+5. **UI Mode "Please specify a config file" error** ✅ FIXED
+   - **Issue**: `node gekko.js --ui` was showing "Please specify a config file" error
+   - **Solution**: Fixed in latest version - command line parsing now works correctly
+   - **Usage**: You can now use either:
+     ```bash
+     # Primary method (now working)
+     node gekko.js --ui
+     
+     # Alternative method (still works)
+     cd web
+     node server.js
+     ```
 
 ### Verification Steps
 
@@ -130,6 +155,8 @@ The following dependencies were modified for Node.js v22 compatibility:
 - `web/server.js` - Added koa-convert wrappers, enabled WebSocket
 - `web/routes/strategies.js` - Fixed lodash compatibility
 - `web/vue/dist/UIconfig.js` - Dynamic host/port configuration
+- `gekko.js` - Fixed server.js path reference for UI mode
+- `core/util.js` - Updated command line parsing for Commander.js v14 compatibility
 
 ## Additional Resources
 

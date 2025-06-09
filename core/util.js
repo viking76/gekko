@@ -23,13 +23,14 @@ var util = {
     if(_config)
       return _config;
 
-    if(!program.config)
+    const opts = program.opts();
+    if(!opts.config)
         util.die('Please specify a config file.', true);
 
-    if(!fs.existsSync(util.dirs().gekko + program.config))
+    if(!fs.existsSync(util.dirs().gekko + opts.config))
       util.die('Cannot find the specified config file.', true);
 
-    _config = require(util.dirs().gekko + program.config);
+    _config = require(util.dirs().gekko + opts.config);
     return _config;
   },
   // overwrite the whole config
@@ -136,9 +137,10 @@ var util = {
     if(_gekkoMode)
       return _gekkoMode;
 
-    if(program['import'])
+    const opts = program.opts();
+    if(opts['import'])
       return 'importer';
-    else if(program.backtest)
+    else if(opts.backtest)
       return 'backtest';
     else
       return 'realtime';
@@ -157,7 +159,7 @@ var util = {
     return _gekkoEnv || 'standalone';
   },
   launchUI: function() {
-    if(program['ui'])
+    if(program.opts().ui)
       return true;
     else
       return false;
@@ -170,7 +172,9 @@ var util = {
 // NOTE: those options are only used
 // in stand alone mode
 // Skip command line parsing during tests
-if (process.env.NODE_ENV !== 'test' && !module.parent) {
+// Allow command line parsing when gekko.js is the main module
+const shouldParseArgs = process.env.NODE_ENV !== 'test' && (!module.parent || (module.parent && module.parent.filename.endsWith('gekko.js')));
+if (shouldParseArgs) {
   program
     .version(util.logVersion())
     .option('-c, --config <file>', 'Config file')
