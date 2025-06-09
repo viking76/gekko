@@ -10,49 +10,47 @@
     "finance"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/*.js --recursive test -u tdd --reporter spec",
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha 'test/**/*.js' --ui bdd --reporter spec",
     "start": "node ./gekko --config config.js --ui"
   },
   "author": "Mike van Rossum <mike@mvr.me>",
   "dependencies": {
-    "async": "2.1.2",
-    "bitfinex-api-node": "^1.2.1",
+    "async": "^3.2.6",
+    "bitfinex-api-node": "^7.0.0",
     "co-fs": "^1.2.0",
-    "commander": "^2.13.0",
+    "commander": "^12.1.0",
     "convnetjs": "^0.3.0",
-    "gekko": "0.0.9",
-    "humanize-duration": "^3.10.0",
-    "koa": "^1.2.0",
-    "koa-bodyparser": "^2.2.0",
-    "koa-cors": "0.0.16",
-    "koa-logger": "^1.3.0",
-    "koa-router": "^5.4.0",
-    "koa-static": "^2.0.0",
-    "lodash": "2.x",
-    "mathjs": "^9.2.0",
-    "moment": "^2.20.1",
-    "opn": "^4.0.2",
+    "humanize-duration": "^3.32.1",
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-cors": "^0.0.16",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^13.0.1",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.21",
+    "mathjs": "^14.0.1",
+    "moment": "^2.30.1",
+    "open": "^10.1.0",
     "promisify-node": "^0.5.0",
-    "prompt-lite": "0.1.1",
+    "prompt-lite": "^0.1.1",
     "relieve": "^2.1.3",
-    "retry": "^0.10.1",
-    "semver": "5.4.1",
-    "sqlite3": "^4.0.6",
-    "stats-lite": "^2.0.4",
-    "tiny-promisify": "^0.1.1",
-    "toml": "^2.3.0",
-    "ws": "^6.0.0"
+
+    "semver": "^7.6.3",
+    "sqlite3": "^5.1.7",
+    "stats-lite": "^2.2.0",
+    "tiny-promisify": "^1.0.0",
+    "toml": "^3.0.0",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^5.0.0",
-    "proxyquire": "^1.7.10",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "sinon": "^4.2.0"
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2",
+    "proxyquire": "^2.1.3",
+    "axios": "^1.7.9",
+    "sinon": "^19.0.2"
   },
   "engines": {
-    "node": ">=8.11.2"
+    "node": ">=18.0.0"
   },
   "license": "MIT",
   "repository": {

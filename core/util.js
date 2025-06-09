@@ -3,7 +3,8 @@ var _ = require('lodash');
 var path = require('path');
 var fs = require('fs');
 var semver = require('semver');
-var program = require('commander');
+var { Command } = require('commander');
+var program = new Command();
 
 var startTime = moment();
 
@@ -168,13 +169,16 @@ var util = {
 
 // NOTE: those options are only used
 // in stand alone mode
-program
-  .version(util.logVersion())
-  .option('-c, --config <file>', 'Config file')
-  .option('-b, --backtest', 'backtesting mode')
-  .option('-i, --import', 'importer mode')
-  .option('--ui', 'launch a web UI')
-  .parse(process.argv);
+// Skip command line parsing during tests
+if (process.env.NODE_ENV !== 'test' && !module.parent) {
+  program
+    .version(util.logVersion())
+    .option('-c, --config <file>', 'Config file')
+    .option('-b, --backtest', 'backtesting mode')
+    .option('-i, --import', 'importer mode')
+    .option('--ui', 'launch a web UI')
+    .parse(process.argv);
+}
 
 // make sure the current node version is recent enough
 if(!util.recentNode())

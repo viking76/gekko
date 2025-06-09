@@ -1,4 +1,4 @@
-const Gdax = require('gdax');
+const CoinbasePro = require('coinbase-pro');
 const _ = require('lodash');
 const moment = require('moment');
 
@@ -38,10 +38,10 @@ const Trader = function(config) {
 
   }
 
-  this.gdax_public = new Gdax.PublicClient(
+  this.gdax_public = new CoinbasePro.PublicClient(
     this.use_sandbox ? this.api_sandbox_url : undefined
   );
-  this.gdax = new Gdax.AuthenticatedClient(
+  this.gdax = new CoinbasePro.AuthenticatedClient(
     this.key,
     this.secret,
     this.passphrase,

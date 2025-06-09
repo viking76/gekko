@@ -19,8 +19,6 @@ var CandleBatcher = function(candleSize) {
   this.candleSize = candleSize;
   this.smallCandles = [];
   this.calculatedCandles = [];
-
-  _.bindAll(this);
 }
 
 util.makeEventEmitter(CandleBatcher);
@@ -32,10 +30,10 @@ CandleBatcher.prototype.write = function(candles) {
 
   this.emitted = 0;
 
-  _.each(candles, function(candle) {
+  _.each(candles, (candle) => {
     this.smallCandles.push(candle);
     this.check();
-  }, this);
+  });
 
   return this.emitted;
 }
@@ -59,13 +57,14 @@ CandleBatcher.prototype.flush = function() {
 }
 
 CandleBatcher.prototype.calculate = function() {
-  // remove the id property of the small candle
-  var { id, ...first } = this.smallCandles.shift();
-
+  // remove the id property from all small candles
+  var candles = _.map(this.smallCandles, candle => _.omit(candle, 'id'));
+  
+  var first = candles[0];
   first.vwp = first.vwp * first.volume;
 
   var candle = _.reduce(
-    this.smallCandles,
+    candles.slice(1),
     function(candle, m) {
       candle.high = _.max([candle.high, m.high]);
       candle.low = _.min([candle.low, m.low]);

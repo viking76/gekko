@@ -1,7 +1,7 @@
 const async = require('async');
 const nodemailer = require('nodemailer');
 const randomExt = require('random-ext');
-const rp = require('request-promise');
+const axios = require('axios');
 const { some } = require('bluebird');
 const fs = require('fs-extra');
 const flat = require('flat');
@@ -328,13 +328,11 @@ class Ga {
     const results = await this.queue(testsSeries, numberOfParallelQueries, async (data) => {
 
       const outconfig = this.getConfig(data);
-      const body = await rp.post({
-        url: `${this.apiUrl}/api/backtest`,
-        json: true,
-        body: outconfig,
+      const response = await axios.post(`${this.apiUrl}/api/backtest`, outconfig, {
         headers: { 'Content-Type': 'application/json' },
         timeout: 3600000
       });
+      const body = response.data;
 
       // These properties will be outputted every epoch, remove property if not needed
       const properties = ['balance', 'profit', 'sharpe', 'market', 'relativeProfit', 'yearlyProfit', 'relativeYearlyProfit', 'startPrice', 'endPrice', 'trades'];
