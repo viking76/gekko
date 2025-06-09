@@ -4,7 +4,6 @@ const retry = require('../exchangeUtils').retry;
 
 
 const CryptoJS = require("crypto-js");
-const querystring = require('querystring');
 const request = require('request');
 
 API_URL='https://api.exmo.com/v1/';
@@ -49,7 +48,7 @@ const includes = (str, list) => {
 
 Trader.prototype.api_query = function(method, params, callback){
 	params.nonce = this.nonce++;
-	var post_data = querystring.stringify(params);
+	var post_data = new URLSearchParams(params).toString();
 
 	var options = {
 	  url: API_URL + method,
